@@ -1,0 +1,27 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - build
+  before_script:
+    - docker login -u $GITLAB_CI_USERNAME -p $GITLAB_CI_PASSWORD registry.gitlab.com
+  script:
+    - docker build -t registry.gitlab.com/mxssl/go-tg-ipv6excuses-bot --build-arg TOKEN=$TLGRM_TOKEN -f docker/build/Dockerfile .
+  after_script:
+    - docker push registry.gitlab.com/mxssl/go-tg-ipv6excuses-bot
+
+deploy:
+  stage: deploy
+  tags:
+    - deploy
+  only:
+    - master
+  before_script:
+  - docker login -u $GITLAB_CI_USERNAME -p $GITLAB_CI_PASSWORD registry.gitlab.com
+  - docker pull registry.gitlab.com/mxssl/go-tg-ipv6excuses-bot
+  script:
+  - echo -e tgToken=$TLGRM_TOKEN > $(pwd)/docker/deploy/.env
+  - docker-compose -f $(pwd)/docker/deploy/docker-compose.yml up -d

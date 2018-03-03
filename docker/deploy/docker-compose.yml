@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+
+  py-tlgrm-netdevops-bot:
+    image: registry.gitlab.com/mxssl/go-tg-ipv6excuses-bot
+    env_file:
+    - .env

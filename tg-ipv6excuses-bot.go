@@ -84,8 +84,8 @@ func main() {
 	})
 
 	b.Handle("/start", func(m *tb.Message){
-        	b.Send(m.Chat, "Hello! Send /help for help.")
-        })
+		b.Send(m.Chat, "Hello! Send /help for help.")
+	})
 
 	b.Start()
 }

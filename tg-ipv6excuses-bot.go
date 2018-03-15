@@ -72,6 +72,7 @@ func main() {
 		"We have IPv6, but we just want to keep things simple",
 		"Our [Dynamic DNS](https://dynv6.com/) doesn't support it",
 		"IPv6 just isn't a priority",
+                "[Junos RESTful API service does not operate over IPv6](https://books.google.ru/books?id=EFoPDAAAQBAJ&pg=PT154&dq=Junos+RESTful+API+service+does+not+operate+over+IPv6&hl=en&sa=X&ved=0ahUKEwje6-D3iO_ZAhUEQJoKHV1ABSgQ6AEIKTAA#v=onepage&q=Junos%20RESTful%20API%20service%20does%20not%20operate%20over%20IPv6&f=false)",
 	}
 
 	b.Handle("/ipv6", func(m *tb.Message) {

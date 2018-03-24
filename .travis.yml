@@ -1,0 +1,13 @@
+language: go
+
+go:
+  - "1.x"
+  - "1.8"
+  - "1.10.x"
+  - master
+
+before_install:
+  - go get gopkg.in/tucnak/telebot.v2
+  
+script:
+  - go build
